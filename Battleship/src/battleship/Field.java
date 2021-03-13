@@ -1,12 +1,15 @@
 package battleship;
 
 import java.awt.*;
-import java.awt.List;
 import java.awt.event.*;
-import java.util.*;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 public class Field implements ActionListener{
+	static int x;
+	static int y;
+	ArrayList<int[]> ships = new ArrayList<int[]>();
 	JFrame f = new JFrame();
 	JButton[][] buttons = new JButton[8][8];
 	int[][] field = {
@@ -38,7 +41,22 @@ public class Field implements ActionListener{
 		for(int i=0; i<8; i++){
 			for(int j=0; j<8; j++){
 				if(e.getSource() == buttons[i][j]) {
-					System.out.println(i + " and " + j);
+					if(field[i][j] == 0) {
+						buttons[i][j].setBackground(Color.RED);
+						int arr[] = {i,j};
+						ships.add(arr);
+						field[i][j] = 1;
+					} else {
+						System.out.println("Ship Already placed there");
+					}
+					
+						/*
+						for (int[] k : field) {
+							for (int l : k) {
+								System.out.print(l);
+							}
+							System.out.println("");
+						}*/
 				}
 			}
 		}
