@@ -8,12 +8,10 @@ import javax.swing.*;
 public class Play {
 	
 	public static void main(String[] args) {
-		final Field j = new Field();
-		System.out.println(j.buttons[0][0]);
-		
-		
+		Field f = new Field();
 	}
-
+	
+	
 }
 /*int[][] p1s = {
 {0,0,0,0,0,0,0,0},

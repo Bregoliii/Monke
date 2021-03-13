@@ -1,39 +1,46 @@
 package battleship;
 
 import java.awt.*;
+import java.awt.List;
 import java.awt.event.*;
-
+import java.util.*;
 import javax.swing.*;
 
-public class Field {
+public class Field implements ActionListener{
 	JFrame f = new JFrame();
 	JButton[][] buttons = new JButton[8][8];
-	int i = 0;
-	int j = 0; 
-	Field(){
-		while(i < 8) {
-			while(j < 8) {
+	int[][] field = {
+			{0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0}
+	};
+	
+	public Field(){
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
 				buttons[i][j] = new JButton(i + " " + j);
 				buttons[i][j].setBackground(Color.WHITE);
 				f.add(buttons[i][j]);
-				//Broken
-				buttons[i][j].addActionListener(new ActionListener(){  
-					public void actionPerformed(ActionEvent e){  
-						System.out.println("Button: " + i + "," + j); 
-					}  
-				}); 
-				j++;
+				buttons[i][j].addActionListener(this);
 			}
-			j = 0;
-			i++;
 		}
 		f.setSize(500,500);
 		f.setLayout(new GridLayout(8,8)); 
 		f.setVisible(true);
-		}
-	
-	void close(){
-		f.setVisible(false);
 	}
-	
+	@Override
+	public void actionPerformed(ActionEvent e){
+		for(int i=0; i<8; i++){
+			for(int j=0; j<8; j++){
+				if(e.getSource() == buttons[i][j]) {
+					System.out.println(i + " and " + j);
+				}
+			}
+		}
+	}
 }
