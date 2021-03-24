@@ -19,16 +19,19 @@ public class Play {
 				Player1.f.setVisible(true);
 				Ships1.f.setVisible(true);
 				if(Player1.turnOver) {
+					
 					try {
 						TimeUnit.SECONDS.sleep(1);
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
 					}
+					
 					for (JButton[] ba : Player2.buttons) { 
 						for (JButton b : ba) { 
 						    b.setEnabled(true);
 						}
 					}
+					
 					Player1.f.setVisible(false);
 					Ships1.f.setVisible(false);
 					try {
@@ -93,5 +96,10 @@ public class Play {
 	public static void turn(Field Player1){
 		Player1.f.setVisible(true);
 		
+	}
+	
+	public static boolean win() {
+		
+		return true;
 	}
 }

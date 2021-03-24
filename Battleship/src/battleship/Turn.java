@@ -30,6 +30,9 @@ public class Turn extends Field{
 					} else {
 						field[i][j] = 2;
 						buttons[i][j].setBackground(Color.CYAN);
+						//test
+						enemy.field[i][j] = 2;
+						enemy.buttons[i][j].setBackground(Color.RED);
 						turnOver = true;
 					}
 				}
