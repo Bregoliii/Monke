@@ -15,12 +15,7 @@ public class Turn extends Field{
 		for(int i=0; i<8; i++){
 			for(int j=0; j<8; j++){
 				if(e.getSource() == buttons[i][j]) {
-					for (JButton[] ba : buttons) { 
-						for (JButton b : ba) { 
-						    b.setEnabled(false);
-						}
-					}
-					System.out.println(turnOver);
+					
 					if(enemy.field[i][j] == 1) {
 						buttons[i][j].setBackground(Color.RED);
 						field[i][j] = 1;
@@ -32,7 +27,7 @@ public class Turn extends Field{
 						buttons[i][j].setBackground(Color.CYAN);
 						//test
 						enemy.field[i][j] = 2;
-						enemy.buttons[i][j].setBackground(Color.RED);
+						enemy.buttons[i][j].setBackground(Color.CYAN);
 						turnOver = true;
 					}
 				}

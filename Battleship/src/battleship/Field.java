@@ -26,7 +26,7 @@ public class Field implements ActionListener{
 	public Field(){
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				buttons[i][j] = new JButton(i + " " + j);
+				buttons[i][j] = new JButton();
 				buttons[i][j].setBackground(Color.WHITE);
 				f.add(buttons[i][j]);
 				buttons[i][j].addActionListener(this);

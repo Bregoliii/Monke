@@ -16,54 +16,9 @@ public class Play {
 		
 		while(!win) {
 			if(!Player1.turnOver) {
-				Player1.f.setVisible(true);
-				Ships1.f.setVisible(true);
-				if(Player1.turnOver) {
-					
-					try {
-						TimeUnit.SECONDS.sleep(1);
-					} catch (InterruptedException e1) {
-						e1.printStackTrace();
-					}
-					
-					for (JButton[] ba : Player2.buttons) { 
-						for (JButton b : ba) { 
-						    b.setEnabled(true);
-						}
-					}
-					
-					Player1.f.setVisible(false);
-					Ships1.f.setVisible(false);
-					try {
-						TimeUnit.SECONDS.sleep(5);
-					} catch (InterruptedException e1) {
-						e1.printStackTrace();
-					}
-					Player2.turnOver = false;
-				}
+				turn(Ships1, Player1, Player2);
 			} else {
-				Player2.f.setVisible(true);
-				Ships2.f.setVisible(true);
-				if(Player2.turnOver) {
-					try {
-						TimeUnit.SECONDS.sleep(1);
-					} catch (InterruptedException e1) {
-						e1.printStackTrace();
-					}
-					for (JButton[] ba : Player2.buttons) { 
-						for (JButton b : ba) { 
-						    b.setEnabled(true);
-						}
-					}
-					Player2.f.setVisible(false);
-					Ships2.f.setVisible(false);
-					try {
-						TimeUnit.SECONDS.sleep(5);
-					} catch (InterruptedException e1) {
-						e1.printStackTrace();
-					}
-					Player1.turnOver = false;
-				}
+				turn(Ships2, Player2, Player1);
 			}
 		}
 	}
@@ -93,13 +48,38 @@ public class Play {
 		}
 	}
 	
-	public static void turn(Field Player1){
-		Player1.f.setVisible(true);
-		
+	public static void flipButtons(boolean bool, Turn player) {
+		for (JButton[] ba : player.buttons) { 
+			for (JButton b : ba) { 
+			    b.setEnabled(bool);
+			}
+		}
+	}
+	
+	public static void timer(int t) {
+		try {
+			TimeUnit.SECONDS.sleep(t);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
 	}
 	
 	public static boolean win() {
-		
 		return true;
 	}
+	
+	public static void turn(placeShip sPlayer, Turn player, Turn enemy) {
+		player.f.setVisible(true);
+		sPlayer.f.setVisible(true);
+		if(player.turnOver) {
+			flipButtons(false, player);
+			timer(1);
+			flipButtons(true, player);
+			player.f.setVisible(false);
+			sPlayer.f.setVisible(false);
+			timer(5);
+			enemy.turnOver = false;
+		}
+	}
+	
 }
