@@ -15,20 +15,22 @@ public class Turn extends Field{
 		for(int i=0; i<8; i++){
 			for(int j=0; j<8; j++){
 				if(e.getSource() == buttons[i][j]) {
-					
-					if(enemy.field[i][j] == 1) {
-						buttons[i][j].setBackground(Color.RED);
-						field[i][j] = 1;
-						enemy.field[i][j] = 2;
-						enemy.buttons[i][j].setBackground(Color.RED);
-						turnOver = true;
-					} else {
-						field[i][j] = 2;
-						buttons[i][j].setBackground(Color.CYAN);
-						//test
-						enemy.field[i][j] = 2;
-						enemy.buttons[i][j].setBackground(Color.CYAN);
-						turnOver = true;
+					switch (enemy.field[i][j]) {
+						case 0:
+							buttons[i][j].setBackground(Color.RED);
+							field[i][j] = 1;
+							enemy.field[i][j] = 2;
+							enemy.buttons[i][j].setBackground(Color.RED);
+							turnOver = true;
+							break;
+						case 1:
+							field[i][j] = 2;
+							buttons[i][j].setBackground(Color.CYAN);
+							//test
+							enemy.field[i][j] = 2;
+							enemy.buttons[i][j].setBackground(Color.CYAN);
+							turnOver = true;
+							break;
 					}
 				}
 			}
