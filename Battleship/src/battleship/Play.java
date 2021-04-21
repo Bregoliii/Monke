@@ -14,13 +14,14 @@ public class Play {
 	public static void main(String[] args) {
 		setShips(Ships1, Ships2);
 		
-		while(!win) {
+		while (!checkwin()) {
 			if(!Player1.turnOver) {
 				turn(Ships1, Player1, Player2);
 			} else {
 				turn(Ships2, Player2, Player1);
 			}
 		}
+		System.out.println(" winnner");	
 	}
 	
 	public static void setShips(Field Ships1, Field Ships2){
@@ -64,9 +65,36 @@ public class Play {
 		}
 	}
 	
-	public static boolean win() {
-		return true;
+	
+	
+	public static boolean checkwin() {
+		boolean winner = true;
+		for(int i=0; i<8; i++) {
+			for(int j=0; j<8; j++){
+				if(Player1.enemy.field[i][j]== 1) {
+					winner = false;
+					System.out.println("Check");	
+				}
+			}
+			
+		} 
+		
+		
+		for(int i=0; i<8; i++) {
+			for(int j=0; j<8; j++){
+				if(Player2.enemy.field[i][j]== 1) {
+					winner = false;
+					System.out.println("Check");	
+				}
+			}
+		}
+		
+		return winner;
+		
+
 	}
+
+	
 	
 	public static void turn(placeShip sPlayer, Turn player, Turn enemy) {
 		player.f.setVisible(true);
