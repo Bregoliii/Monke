@@ -16,13 +16,6 @@ public class placeShip extends Field{
 					} else {
 						System.out.println("Ship Already placed there");
 					}
-					/*
-					for (int[] k : field) {
-						for (int l : k) {
-							System.out.print(l);
-						}
-						System.out.println("");
-					}*/
 				}
 			}
 		}

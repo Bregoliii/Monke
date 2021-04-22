@@ -9,16 +9,18 @@ public class Play {
 	static placeShip Ships2 = new placeShip();
 	static Turn Player1 = new Turn(Ships2);
 	static Turn Player2 = new Turn(Ships1);
-	
 	static boolean win = false;
+	
 	public static void main(String[] args) {
 		setShips(Ships1, Ships2);
 		
-		while (!checkwin()) {
+		while (!win) {
 			if(!Player1.turnOver) {
 				turn(Ships1, Player1, Player2);
+				checkwin(Player1);
 			} else {
 				turn(Ships2, Player2, Player1);
+				checkwin(Player2);
 			}
 		}
 		System.out.println(" winnner");	
@@ -67,31 +69,15 @@ public class Play {
 	
 	
 	
-	public static boolean checkwin() {
-		boolean winner = true;
-		for(int i=0; i<8; i++) {
-			for(int j=0; j<8; j++){
-				if(Player1.enemy.field[i][j]== 1) {
-					winner = false;
-					System.out.println("Check");	
-				}
-			}
-			
-		} 
-		
-		
-		for(int i=0; i<8; i++) {
-			for(int j=0; j<8; j++){
-				if(Player2.enemy.field[i][j]== 1) {
-					winner = false;
-					System.out.println("Check");	
+	public static void checkwin(Turn player) {
+		win = true;
+		for(int[] i: player.enemy.field) {
+			for(int j: i) {
+				if(j == 1) {
+					win = false;
 				}
 			}
 		}
-		
-		return winner;
-		
-
 	}
 
 	
@@ -105,7 +91,7 @@ public class Play {
 			flipButtons(true, player);
 			player.f.setVisible(false);
 			sPlayer.f.setVisible(false);
-			timer(5);
+			timer(1);
 			enemy.turnOver = false;
 		}
 	}
