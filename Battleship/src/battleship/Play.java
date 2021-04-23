@@ -14,6 +14,8 @@ public class Play {
 	public static void main(String[] args) {
 		setShips(Ships1, Ships2);
 		
+		timer(5);
+		
 		while (!win) {
 			if(!Player1.turnOver) {
 				turn(Ships1, Player1, Player2);
@@ -23,7 +25,7 @@ public class Play {
 				checkwin(Player2);
 			}
 		}
-		System.out.println(" winnner");	
+		System.out.println(" winner winner chicken dinner");	
 	}
 	
 	public static void setShips(Field Ships1, Field Ships2){
@@ -87,7 +89,7 @@ public class Play {
 		sPlayer.f.setVisible(true);
 		if(player.turnOver) {
 			flipButtons(false, player);
-			timer(1);
+			timer(5);
 			flipButtons(true, player);
 			player.f.setVisible(false);
 			sPlayer.f.setVisible(false);

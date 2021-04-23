@@ -42,7 +42,15 @@ public class Turn extends Field{
                             enemy.buttons[i][j].setBackground(Color.RED);
                             turnOver = true;
                             break;
+                        case 2:
+                            System.out.println("Already shot there! Choose another field");
+                            break;
+                        case 3:
+                            System.out.println("Already shot there! Choose another field");
+                            break;
+                            
                     }
+                                              
                 }
             }
         }
