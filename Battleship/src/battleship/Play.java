@@ -1,8 +1,7 @@
 package battleship;
 
 import java.util.concurrent.TimeUnit;
-
-import javax.swing.JButton;
+import javax.swing.*;
 
 public class Play {
 	// Adds Ship Locations
@@ -15,6 +14,7 @@ public class Play {
 	
 	// Used for while Loop
 	static boolean win = false;
+	static String winner;
 	
 	//Main
 	public static void main(String[] args) {
@@ -32,14 +32,14 @@ public class Play {
 				//Fires a Shot
 				turn(Ships1, Player1, Player2);
 				//Checks for win
-				checkwin(Player1);
+				checkwin(Player1, "Player 1");
 			} else {
 				turn(Ships2, Player2, Player1);
-				checkwin(Player2);
+				checkwin(Player2, "Player 2");
 			}
 		}
 		//If someone Won
-		System.out.println(" winner winner chicken dinner");	
+		System.out.println(winner + " won! Winner winner chicken dinner");	
 	}
 	
 	public static void setShips(Field Ships1, Field Ships2){
@@ -62,6 +62,10 @@ public class Play {
 				break;
 			}
 		}
+		Ships1.f.dispose();
+		Ships2.f.dispose();
+		Player1.f.dispose();
+		Player2.f.dispose();
 		
 		//Sets buttons to false so no more ships can be placed
 		//(Goes through the button array)
@@ -97,8 +101,9 @@ public class Play {
 	
 	
 	//Goes through enemy players ship array and checks for ships
-	public static void checkwin(Turn player) {
+	public static void checkwin(Turn player, String name) {
 		win = true;
+		winner = name;
 		for(int[] i: player.enemy.field) {
 			for(int j: i) {
 				if(j == 1) {
@@ -118,7 +123,7 @@ public class Play {
 		if(player.turnOver) {
 			//turn OFF buttons, wait 5 seconds 
 			flipButtons(false, player);
-			timer(5);
+			timer(1);
 			//turn ON buttons so they can shoot after the enemy has finished their turn
 			flipButtons(true, player);
 			//Sets windows to invisible
