@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 
 public class Turn extends Field{
-	//Enemy field
+	//Gegner Feld
     placeShip enemy;
     public Turn(placeShip enemy) {
         this.enemy = enemy;
@@ -26,30 +26,30 @@ public class Turn extends Field{
     boolean turnOver = false;
     //On Button press
     public void action(ActionEvent e){
-    	//Find which button was pressed
+    	//Welcher Knopf gedrueckt wurde
         for(int i=0; i<8; i++){
             for(int j=0; j<8; j++){
                 if(e.getSource() == buttons[i][j]) {
                 	//Checks Field Value
                     switch(enemy.field[i][j]) {
-                        case 0: //No hit, Changes value to 2 and color to CYAN for visual feedback, Turn is over
+                        case 0: // Kein Trefer, Value wird zu 2 und Farbe zu CYAN für visuelles Feedback, Zug ist zu Ende
                         	field[i][j] = 2;
                             buttons[i][j].setBackground(Color.CYAN);
                             enemy.field[i][j] = 3;
                             enemy.buttons[i][j].setBackground(Color.CYAN);
                             turnOver = true;
                             break;
-                        case 1: //Hit, Changes value to 1 and color to Red
+                        case 1:// Treffer, Farbe verändert sich und Farbe wird zu Rot
                             buttons[i][j].setBackground(Color.RED);
                             field[i][j] = 1;
                             enemy.field[i][j] = 2;
                             enemy.buttons[i][j].setBackground(Color.RED);
                             turnOver = true;
                             break;
-                        case 2: //Field already Shot at, turnOver still false, another shot
+                        case 2://Auf das Feld wurde schon geschossen und man muss einen neuen Schuss abgeben
                             System.out.println("Already shot there! Choose another field");
                             break;
-                        case 3: //Field already Shot at, turnOver still false, another shot
+                        case 3: //Auf das Feld wurde schon geschossen und man muss einen neuen Schuss abgeben
                             System.out.println("Already shot there! Choose another field");
                             break;
                             

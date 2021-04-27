@@ -6,18 +6,18 @@ import java.awt.event.ActionEvent;
 public class placeShip extends Field{
 	//On Button press
 	public void action(ActionEvent e){
-		//Loops through button array to find which button was pressed
+		// Geht durch den button array um herauszufinden, welcher Knopf gedrückt wurde.
 		for(int i=0; i<8; i++){
 			for(int j=0; j<8; j++){
 				if(e.getSource() == buttons[i][j]) {
-					//Checks if the Field has a Ship
+					//Schaut, ob das Feld noch Schiffe hat. 
 					if(field[i][j] == 0) {
-						//Sets button to black and adds the ship
+						//Der Konpf wird schwarz und addiert das Schiff zum Feld.
 						buttons[i][j].setBackground(Color.BLACK);
 						int arr[] = {i,j};
 						ships.add(arr);
 						field[i][j] = 1;
-					//Ship already placed there
+					//Schiff ist auf diesem Feld schon platziert
 					} else {
 						System.out.println("Ship Already placed there");
 					}
