@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 public class Field implements ActionListener{
-	//Anzahl Schiffe die platziert worden sind 
+	//Amount of ships placed
 	ArrayList<int[]> ships = new ArrayList<int[]>();
 	JFrame f = new JFrame();
-	//Button array hat die gleiche Grösse wie Field
+	//Button array same size as Field
 	JButton[][] buttons = new JButton[8][8];
-	//Array, die die Informationen auf das Field überträgt 
+	//Array for storing information of Fields
 	int[][] field = {
 			{0,0,0,0,0,0,0,0},
 			{0,0,0,0,0,0,0,0},
